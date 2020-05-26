@@ -1,4 +1,4 @@
-CloudFormation Exercise 5:
+# CloudFormation Exercise 5:
 
 You should know how to create a default bucket by now. What about spicing it up a little. Create a bucket that is configured for static website hosting, and return the website URL. Make sure that the index document is called `index.html`.
 Try to create the bucket:

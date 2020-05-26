@@ -1,4 +1,4 @@
-CloudFormation Exercise 2:
+# CloudFormation Exercise 2:
 
 Next step: Create the same S3 bucket (make sure you delete your old one first), but put the bucket name as a parameter.
 

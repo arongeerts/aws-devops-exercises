@@ -1,4 +1,4 @@
-CloudFormation Exercise 4:
+# CloudFormation Exercise 4:
 
 You are getting pretty good at putting things in a CloudFormation template, now let's see what you can get out of them.
 Create a bucket called

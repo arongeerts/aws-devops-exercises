@@ -1,4 +1,4 @@
-CloudFormation Exercise 3:
+# CloudFormation Exercise 3:
 
 Typing the whole bucket name is actually quite some work, you only want your name to be the parameter right?
 Try to create the bucket:
