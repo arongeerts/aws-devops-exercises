@@ -6,3 +6,5 @@ Create a bucket called
 
 You can check whether your solution is correct by checking the AWS console to see if your bucket was created.
 Your outputs should be visible in the CloudFormation console.
+You can also query them using:
+`aws cloudformation describe-stacks --stack-name exercise4`

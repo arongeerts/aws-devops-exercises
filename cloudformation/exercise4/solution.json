@@ -39,8 +39,9 @@
                     "MyBucket",
                     "DomainName"
                 ]
-            }
-        },
-        "Description": "Domain name of the bucket"
+            },
+            "Description": "Domain name of the bucket"
+        }
+        
     }
 }

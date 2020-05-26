@@ -8,3 +8,4 @@ You should be able to run with something like
 `aws cloudformation deploy --stack-name exercise5 --template-file mytemplate.json --parameter-overrides MyName=MY_NAME`
 
 You can check whether your solution is correct by uploading the `index.html` file in your bucket and browsing to the URL that was returned.
+Make sure you upload this file with public read access!

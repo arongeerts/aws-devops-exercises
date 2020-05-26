@@ -1,3 +1,4 @@
+---
 Parameters:
   MyName:
     Type: String
@@ -8,7 +9,12 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: PublicRead
-      BucketName: public-bucket
+      BucketName:
+        Fn::Join:
+        - "-"
+        - - aws-devops-session-2
+          - !Ref MyName
+          - ex5
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html

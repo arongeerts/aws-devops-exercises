@@ -11,7 +11,7 @@ Resources:
         Fn::Join:
         - "-"
         - - aws-devops-session-2
-          - "!Ref MyName"
+          - !Ref MyName
           - ex4
 Outputs:
   ARN:
@@ -25,4 +25,4 @@ Outputs:
       Fn::GetAtt:
       - MyBucket
       - DomainName
-  Description: Domain name of the bucket
+    Description: Domain name of the bucket

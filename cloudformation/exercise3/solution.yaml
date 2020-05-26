@@ -11,5 +11,5 @@ Resources:
         Fn::Join:
         - "-"
         - - aws-devops-session-2
-          - "!Ref MyName"
+          - !Ref MyName
           - ex3
