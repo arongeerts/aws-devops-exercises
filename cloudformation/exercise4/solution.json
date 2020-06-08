@@ -1,0 +1,47 @@
+{
+    "Parameters": {
+        "MyName": {
+            "Type": "String",
+            "Default": "aron",
+            "Description": "The name of the person creating the S3 Bucket"
+        }
+    },
+    "Resources": {
+        "MyBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "aws-devops-session-2",
+                            "!Ref MyName",
+                            "ex4"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "ARN": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "MyBucket",
+                    "Arn"
+                ]
+            },
+            "Description": "Arn of your new S3 bucket"
+        },
+        "DomainName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "MyBucket",
+                    "DomainName"
+                ]
+            },
+            "Description": "Domain name of the bucket"
+        }
+        
+    }
+}

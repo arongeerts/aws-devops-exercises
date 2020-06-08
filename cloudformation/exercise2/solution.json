@@ -1,0 +1,18 @@
+{
+    "Parameters": {
+        "BucketName": {
+            "Type": "String",
+            "Default": "aws-devops-session-2-aron-ex2",
+            "Description": "The name of the S3 bucket to be created"
+        }
+
+    },
+    "Resources": {
+        "MyBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "!Ref BucketName"
+            }
+        }
+    }
+}
