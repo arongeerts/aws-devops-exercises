@@ -1,0 +1,1 @@
+docker run -v $(pwd):/code python:3.8 python /code/hello.py

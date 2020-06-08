@@ -1,0 +1,27 @@
+---
+Parameters:
+  MyName:
+    Type: String
+    Default: aron
+    Description: The name of the person creating the S3 Bucket
+Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName:
+        Fn::Join:
+        - "-"
+        - - aws-devops-session-2
+          - !Ref MyName
+          - ex5
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+Outputs:
+  WebsiteURL:
+    Value:
+      Fn::GetAtt:
+      - MyBucket
+      - WebsiteURL
+    Description: URL for website hosted on S3

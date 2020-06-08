@@ -1,0 +1,78 @@
+Parameters:
+  MyName:
+    Type: String
+    Default: aron
+    Description: The name of the person creating the S3 Bucket
+
+Resources:
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      Policies:
+      - PolicyName: my-lambda-policy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action: 
+              - s3:*
+            Resource: 
+              - Fn::GetAtt:
+                - MyBucket
+                - Arn
+              - Fn::Join:
+                - ""
+                - - Fn::GetAtt:
+                    - MyBucket
+                    - Arn
+                  - /*
+                
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        Fn::Join:
+        - "-"
+        - - aws-devops-session-2
+          - !Ref MyName
+          - ex6
+
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: MyFunction
+      Handler: index.lambda_handler
+      Role:
+        Fn::GetAtt:
+        - LambdaRole
+        - Arn
+      Code:
+        ZipFile: 
+          | 
+          import boto3
+          import os
+          import json
+          import datetime
+
+          def lambda_handler(event, context):
+              key = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+              boto3.client('s3').put_object(Bucket=os.environ['BUCKET_NAME'], Key=key, Body=json.dumps(event))
+              return {
+                  "status": "done",
+                  "key": key
+              }
+      Runtime: python3.6
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref MyBucket
+
